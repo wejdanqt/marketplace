@@ -37,14 +37,23 @@
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 								<ul class="nav navbar-nav menu_nav ml-auto">
 										<li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+										{% if user.is_authenticated %}
 										<li class="nav-item submenu dropdown">
 											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
 											<ul class="dropdown-menu">
-												<li class="nav-item"><a class="nav-link" href="admin">Add Products</a></li>
+												<li class="nav-item"><a class="nav-link" href="add_product">Add Products</a></li>
 												<!-- <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Project Details</a></li>
 												<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li> -->
 											</ul>
 										</li> 
+
+										<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li> 
+
+										{% endif %}
+										{% if not user.is_authenticated %}
+										<li class="nav-item active"><a class="nav-link" href="/login">login</a></li> 
+
+										{% endif %}
 									</ul>
 						</div> 
 					</div>
@@ -60,7 +69,7 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="home_left_img">
-								<img src="{% static 'first_app/img/banner/home-left-1.jpg' %}" width="500"/>
+								<img src="{% static 'first_app/img/banner/laptop.png' %}" width="500"/>
 							</div>
 						</div>
 						<div class="col-lg-6">
