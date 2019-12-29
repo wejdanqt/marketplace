@@ -1,16 +1,18 @@
 from django.shortcuts import render, HttpResponse , redirect
-from .models import Product
-from django.contrib.auth import login , authenticate
+from .models import Product , User
+from django.contrib.auth import login , authenticate , logout
 from django import forms 
 from django.contrib import messages
 from .forms import *
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth import logout
+from django.core.paginator import Paginator
+
+
 
 
 def index(request):
     context = {
-        "products" : Product.objects.all()
+        "products" : Product.objects.all(),
     }	
     return render(request, "first_app/index.html" , context)
 
@@ -27,9 +29,7 @@ def signup(request):
             user.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            print(username)
-            print(password)
-            print(form.cleaned_data)
+            # import ipdb; ipdb.set_trace() # BREAKPOINT
             user = authenticate(request, username=username, password=password)
             login(request, user)
             return redirect('/')
@@ -37,7 +37,7 @@ def signup(request):
               form.add_error('confirm_password', 'The passwords do not match')
     else:
         form = UserForm()
-    return render(request, "first_app/signup.html" , {'form' : form})
+    return render(request, "first_app/signup.html" , {'form' : form })
 
 def user_login(request):
     if request.method == "POST":
@@ -45,8 +45,6 @@ def user_login(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            print(username)
-            print(password)
             user = authenticate(request, username=username, password=password)
             print(user)
             if user is not None: 
@@ -75,6 +73,23 @@ def add_product(request):
     else:
         form = addform()
     return render(request , "first_app/admin.html", {'form' : form} )
+
+''' All products'''
+
+def all_products(request):
+    product = Product.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(product, 6)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+    return render(request, "first_app/all_products.html" ,  { 'products': products } )
+
+
 
 
 def user_logout(request):

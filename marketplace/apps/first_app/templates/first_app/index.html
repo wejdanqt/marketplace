@@ -1,100 +1,112 @@
 <!doctype html>
 <html lang="en">
-    <head>
-			{% load static %}	
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
-        <title>Home</title>
-        <!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{% static 'first_app/css/bootstrap.css' %}">   
-		<link rel="stylesheet" href="{% static 'first_app/vendors/linericon/style.css' %}"> 
-		<link rel="stylesheet" href="{% static 'first_app/css/font-awesome.min.css' %}">   
-		<link rel="stylesheet" href="{% static 'first_app/vendors/owl-carousel/owl.carousel.min.css' %}"> 
-		<link rel="stylesheet" href="{% static 'first_app/vendors/lightbox/simpleLightbox.css' %}"> 
-		<link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}"> 
-		<link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}"> 
-		<link rel="stylesheet" href="{% static 'vendors/flaticon/flaticon.css' %}"> 
-        <!-- main css -->
-		<link rel="stylesheet" href="{% static 'first_app/css/style.css' %}">   
-		<link rel="stylesheet" href="{% static 'first_app/css/responsive.css' %}">   
-    </head>
-    <body>
-        
-        <!--================Header Menu Area =================-->
-        <header class="header_area">
-            <div class="main_menu" id="mainNav">
-            	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container box_1620">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-								<ul class="nav navbar-nav menu_nav ml-auto">
-										<li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
-										{% if user.is_authenticated %}
-										<li class="nav-item submenu dropdown">
-											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
-											<ul class="dropdown-menu">
-												<li class="nav-item"><a class="nav-link" href="add_product">Add Products</a></li>
-												<!-- <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Project Details</a></li>
-												<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li> -->
-											</ul>
-										</li> 
 
-										<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li> 
+<head>
+	{% load static %}
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-										{% endif %}
-										{% if not user.is_authenticated %}
-										<li class="nav-item active"><a class="nav-link" href="/login">login</a></li> 
+	<title>Home</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'first_app/css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'first_app/vendors/linericon/style.css' %}">
+	<link rel="stylesheet" href="{% static 'first_app/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'first_app/vendors/owl-carousel/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'first_app/vendors/lightbox/simpleLightbox.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/flaticon/flaticon.css' %}">
+	<!-- main css -->
+	<link rel="stylesheet" href="{% static 'first_app/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'first_app/css/responsive.css' %}">
+</head>
 
-										{% endif %}
-									</ul>
-						</div> 
-					</div>
-            	</nav>
-            </div>
-        </header>
-        <!--================Header Menu Area =================-->
-        
-        <!--================Home Banner Area =================-->
-        <section class="home_banner_area">
-            <div class="banner_inner">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="home_left_img">
-								<img src="{% static 'first_app/img/banner/laptop.png' %}" width="500"/>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="banner_content">
+<body>
+
+	<!--================Header Menu Area =================-->
+	<header class="header_area">
+		<div class="main_menu" id="mainNav">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container box_1620">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
 						
-								<h2>luctus dictum</h2>
-								<p>Cras tincidunt nisl neque, luctus dictum nibh lobortis non. Suspendisse vulputate lacinia nibh. Etiam auctor nisl a mauris pharetra lobortis. Aenean tincidunt tellus eu ullamcorper imperdiet. Nulla laoreet mi quam, et cursus risus feugiat vel. Donec efficitur malesuada nibh, laoreet euismod augue dignissim non.</p>
-								<a class="banner_btn" href="#">Discover Now</a>
-							</div>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Products</a>
+								<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="products">View Products</a></li>
+										{% if user.is_authenticated %}
+									<li class="nav-item"><a class="nav-link" href="add_product">Add Products</a></li>
+									<!-- <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Project Details</a></li>
+												<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li> -->
+												{% endif %}
+								</ul>
+							</li>
+							{% if user.is_authenticated %}
+
+							<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
+										{% endif %}
+							
+							{% if not user.is_authenticated %}
+							<li class="nav-item active"><a class="nav-link" href="/login">login</a></li>
+
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!--================Header Menu Area =================-->
+
+	<!--================Home Banner Area =================-->
+	<section class="home_banner_area">
+		<div class="banner_inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="home_left_img">
+							<img src="{% static 'first_app/img/banner/laptop.png' %}" width="500" />
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="banner_content">
+
+							<h2>luctus dictum</h2>
+							<p>Cras tincidunt nisl neque, luctus dictum nibh lobortis non. Suspendisse vulputate lacinia
+								nibh. Etiam auctor nisl a mauris pharetra lobortis. Aenean tincidunt tellus eu
+								ullamcorper imperdiet. Nulla laoreet mi quam, et cursus risus feugiat vel. Donec
+								efficitur malesuada nibh, laoreet euismod augue dignissim non.</p>
+							<!-- <a class="banner_btn" href="#">Discover Now</a> -->
 						</div>
 					</div>
 				</div>
-            </div>
-        </section>
-		<!--================End Home Banner Area =================-->
-		
-		 
-        <!--================Projects Area =================-->
-        <section class="projects_area p_120">
-				<div class="container">
-					<div class="main_title">
-						<h2>Our Recent Completed Projects</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
-					</div>
-					<!-- <div class="projects_fillter">
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+
+	<!--================Projects Area =================-->
+	<section class="projects_area p_120">
+		<div class="container">
+			<div class="main_title">
+				<h2>Our Recent Completed Projects</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+			</div>
+			<!-- <div class="projects_fillter">
 						<ul class="filter list">
 							<li class="active" data-filter="*"><a href="#">All Categories</a></li>
 							<li data-filter=".brand"><a href="#">Branding</a></li>
@@ -102,101 +114,125 @@
 							<li data-filter=".web"><a href="#">Web Design</a></li>
 						</ul>
 					</div> -->
-					
-					<div class="projects_inner row">
-						<!--............................-->
-						{% for product in products %}
-						<div class="col-lg-4 col-sm-6 brand web">
-							<div class="projects_item">
-							<!-- <img src="{% static 'first_app/img/projects/projects-4.jpg' %}" />	 -->
-							<img src="media/{{product.photo}}" width="100%" />	
-								<div class="projects_text">
-									<a href="detail/{{product.id}}"><h4>{{product.name}}</h4></a>
-									<p>Client Project</p>
-								</div>
-							</div>
+
+			<div class="projects_inner row">
+				<!--............................-->
+
+				{% for product in products %}
+				{% if forloop.counter <= 6 %}
+				<div class="col-lg-4 col-sm-6 brand web">
+					<div class="projects_item">
+						<!-- <img src="{% static 'first_app/img/projects/projects-4.jpg' %}" />	 -->
+						<img src="media/{{product.photo}}" width="100%" />
+						<div class="projects_text">
+							<a href="detail/{{product.id}}">
+								<h4>{{product.name}}</h4>
+							</a>
+				
 						</div>
-						{% endfor %}
-					<!--............................-->
 					</div>
 				</div>
-			</section>
-			<!--================End Projects Area =================-->
-   
-		 
-			
-      
-        <!--================Footer Area =================-->
-        <footer class="footer_area p_120">
-        	<div class="container">
-        		<div class="row footer_inner">
-        			<div class="col-lg-5 col-sm-6">
-        				<aside class="f_widget ab_widget">
-        					<div class="f_title">
-        						<h3>About Us</h3>
-        					</div>
-        					<p>Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills,</p>
-</p>
-        				</aside>
-        			</div>
-        			<div class="col-lg-5 col-sm-6">
-        				<aside class="f_widget news_widget">
-        					<div class="f_title">
-        						<h3>Newsletter</h3>
-        					</div>
-        					<p>Stay updated with our latest trends</p>
-        					<div id="mc_embed_signup">
-                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
-                                	<div class="input-group d-flex flex-row">
-                                        <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '"  type="email">
-                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
-                                    </div>				
-                                    <div class="mt-10 info"></div>
-                                </form>
-                            </div>
-        				</aside>
-        			</div>
-        			<div class="col-lg-2">
-        				<aside class="f_widget social_widget">
-        					<div class="f_title">
-        						<h3>Follow Us</h3>
-        					</div>
-        					<p>Let us be social</p>
-        					<ul class="list">
-        						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-        						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-        						<li><a href="#"><i class="fa fa-behance"></i></a></li>
-        					</ul>
-        				</aside>
-        			</div>
-        		</div>
-        	</div>
-        </footer>
-        <!--================End Footer Area =================-->
-        
-        
-        
-        
-        
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script src="{% static 'first_app/js/jquery-3.2.1.min.js' %}"></script>
-		<script src="{% static 'first_app/js/popper.js' %}"></script>
-		<script src="{% static 'first_app/js/bootstrap.min.js' %}"></script>
-		<script src="{% static 'first_app/js/stellar.js '%}"></script>
-		<script src="{% static 'first_app/vendors/lightbox/simpleLightbox.min.js' %}"></script>
-		<script src="{% static 'first_app/vendors/nice-select/js/jquery.nice-select.min.js ' %}"></script>
-		<script src="{% static 'first_app/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
-		<script src="{% static 'first_app/vendors/isotope/isotope-min.js' %}"></script>
-		<script src="{% static 'first_app/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
-		<script src="{% static 'first_app/js/jquery.ajaxchimp.min.js' %}"></script>
-		<script src="{% static 'first_app/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
-		<script src="{% static 'first_app/vendors/counter-up/jquery.counterup.min.js' %}"></script>
-		<script src="{% static 'first_app/js/mail-script.js' %}"></script>
-        <!--gmaps Js-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-		<script src="{% static 'first_app/js/gmaps.min.js' %}"></script>
-		<script src="{% static 'first_app/js/theme.js' %}"></script>
-    </body>
+				{% endif %}
+				{% endfor %}
+				{%if  products.count > 6 %}
+				<div class="col-lg-4 col-sm-6 brand web">
+				<div class="projects_item">
+					<img src="{% static 'first_app/img/banner/gray.jpg' %}" width="100%" />
+					<div class="projects_text">
+						<a href="products">
+							<h4>View All</h4>
+						</a>
+						<p>Client Project</p>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			<!--............................-->
+		</div>
+		</div>
+	</section>
+	<!--================End Projects Area =================-->
+
+
+
+
+	<!--================Footer Area =================-->
+	<footer class="footer_area p_120">
+		<div class="container">
+			<div class="row footer_inner">
+				<div class="col-lg-5 col-sm-6">
+					<aside class="f_widget ab_widget">
+						<div class="f_title">
+							<h3>About Us</h3>
+						</div>
+						<p>Do you want to be even more successful? Learn to love learning and growth. The more effort
+							you put into improving your skills,</p>
+						</p>
+					</aside>
+				</div>
+				<div class="col-lg-5 col-sm-6">
+					<aside class="f_widget news_widget">
+						<div class="f_title">
+							<h3>Newsletter</h3>
+						</div>
+						<p>Stay updated with our latest trends</p>
+						<div id="mc_embed_signup">
+							<form target="_blank"
+								action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+								method="get" class="subscribe_form relative">
+								<div class="input-group d-flex flex-row">
+									<input name="EMAIL" placeholder="Enter email address"
+										onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '"
+										type="email">
+									<button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
+								</div>
+								<div class="mt-10 info"></div>
+							</form>
+						</div>
+					</aside>
+				</div>
+				<div class="col-lg-2">
+					<aside class="f_widget social_widget">
+						<div class="f_title">
+							<h3>Follow Us</h3>
+						</div>
+						<p>Let us be social</p>
+						<ul class="list">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+						</ul>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================End Footer Area =================-->
+
+
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="{% static 'first_app/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'first_app/js/popper.js' %}"></script>
+	<script src="{% static 'first_app/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'first_app/js/stellar.js '%}"></script>
+	<script src="{% static 'first_app/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+	<script src="{% static 'first_app/vendors/nice-select/js/jquery.nice-select.min.js ' %}"></script>
+	<script src="{% static 'first_app/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+	<script src="{% static 'first_app/vendors/isotope/isotope-min.js' %}"></script>
+	<script src="{% static 'first_app/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'first_app/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'first_app/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'first_app/vendors/counter-up/jquery.counterup.min.js' %}"></script>
+	<script src="{% static 'first_app/js/mail-script.js' %}"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="{% static 'first_app/js/gmaps.min.js' %}"></script>
+	<script src="{% static 'first_app/js/theme.js' %}"></script>
+</body>
+
 </html>
