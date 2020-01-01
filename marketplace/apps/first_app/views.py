@@ -11,6 +11,13 @@ from django.core.paginator import Paginator
 
 
 def index(request):
+
+    from django.utils import translation
+    # user_language = 'ar'
+    # translation.activate(user_language)
+    # request.session[translation.LANGUAGE_SESSION_KEY] = user_language
+    if translation.LANGUAGE_SESSION_KEY in request.session:
+        del request.session[translation.LANGUAGE_SESSION_KEY]
     context = {
         "products" : Product.objects.all(),
     }	
@@ -46,7 +53,6 @@ def user_login(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
-            print(user)
             if user is not None: 
                 form = login(request, user) 
                 # messages.success(request, f' wecome {username} !!') 

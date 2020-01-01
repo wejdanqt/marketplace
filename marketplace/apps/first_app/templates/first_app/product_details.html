@@ -8,7 +8,7 @@
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>Product Details</title>
         <!-- Bootstrap CSS -->
-
+		{%load i18n %}
 		<link rel="stylesheet" href="{% static 'first_app/css/bootstrap.css' %}">   
 		<link rel="stylesheet" href="{% static 'first_app/vendors/linericon/style.css' %}"> 
 		<link rel="stylesheet" href="{% static 'first_app/css/font-awesome.min.css' %}">   
@@ -39,29 +39,81 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 								<ul class="nav navbar-nav menu_nav ml-auto">
-									<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+									<li class="nav-item active"><a class="nav-link" href="/"> {% trans "Home" %}</a></li>
+		
+									<li class="nav-item submenu dropdown">
+											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+												aria-haspopup="true" aria-expanded="false">{% trans "Products" %}</a>
+											<ul class="dropdown-menu">
+													<li class="nav-item"><a class="nav-link" href="products">{% trans "View Products" %}</a></li>
+													{% if user.is_authenticated %}
+												<li class="nav-item"><a class="nav-link" href="add_product"> {% trans "Add Product" %}</a></li>
+												<!-- <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Project Details</a></li>
+															<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li> -->
+															{% endif %}
+											</ul>
+										</li>
+										{% if user.is_authenticated %}
+			
+										<li class="nav-item active"><a class="nav-link" href="/logout">{% trans "Logout" %}</a></li>
+													{% endif %}
+										
+										{% if not user.is_authenticated %}
+										<li class="nav-item active"><a class="nav-link" href="/login">{% trans "login" %}</a></li>
+			
+										{% endif %}
 								
+		
+		
+									<!-- ------------------------------------------------- -->
+									<!-- {% get_current_language as LANGUAGE_CODE %}
+										<form action="{% url 'set_language' %}" method="post" id = "my_form" >{% csrf_token %}
+											<input type="hidden" name="next" value="{{ redirect_to  }}">
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-											aria-haspopup="true" aria-expanded="false">Products</a>
-										<ul class="dropdown-menu">
-												<li class="nav-item"><a class="nav-link" href="../products">View Products</a></li>
-												{% if user.is_authenticated %}
-											<li class="nav-item"><a class="nav-link" href="add_product">Add Products</a></li>
-											<!-- <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Project Details</a></li>
-														<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li> -->
-														{% endif %}
+											aria-haspopup="true" aria-expanded="false"> Change Language</a>
+										<ul class="dropdown-menu" >
+		
+											{% get_available_languages as LANGUAGES %}
+											{% get_language_info_list for LANGUAGES as languages  %}
+											{% for language in languages %}
+		
+											<li class="nav-item"><a  class="nav-link" href="javascript:$('form').submit()" >{{ language.name_local  }} ({{ language.code }})</a></li>
+											<li class="nav-item" value="{{ language.code }}" >	<a href="javascript:$('#my_form').submit();" class="nav-link">
+												{{ language.name_local  }} ({{ language.code }})
+											</a>
+										</li>
+											{% endfor %}
+		
 										</ul>
 									</li>
-									{% if user.is_authenticated %}
 		
-									<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
-												{% endif %}
-									
-									{% if not user.is_authenticated %}
-									<li class="nav-item active"><a class="nav-link" href="/login">login</a></li>
+									</form> -->
 		
-									{% endif %}
+		
+									<!-- ------------------------------------------------- -->
+								
+									<li class="nav-item dropdown">
+										<form action="{% url 'set_language' %}" method="post" class="nav-link">
+											{% csrf_token %}
+											<input type="hidden" name="next" value="{{ redirect_to}}">
+		
+											<select  style="background: rgba(0, 0, 0, 0); Border: none;" name="language"
+												onchange="this.form.submit()" class="nav-link dropdown-toggle"
+												id="navbarDropdown">
+		
+												{% get_available_languages as LANGUAGES %}
+												{% get_language_info_list for LANGUAGES as languages %}
+												{% for language in languages%}
+												<option class="dropdown-item" value="{{ language.code}}"
+													{% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+													{{ language.name_local}} ({{language.code}})
+												</option>
+												{% endfor %}
+											</select>
+										</form>
+									</li>
+								
 								</ul>
 							</div>
 						</div>
@@ -96,7 +148,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="left_img">
-									<img src="../media/{{product.photo}}"  />	
+									<img src="../../media/{{product.photo}}"  />	
 
 							</div>
 						</div>

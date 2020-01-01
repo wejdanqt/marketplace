@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	{%load i18n %}
     <title>Home</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'first_app/css/bootstrap.css' %}">
@@ -26,49 +26,101 @@
 
     <!--================Header Menu Area =================-->
     <header class="header_area">
-        <div class="main_menu" id="mainNav">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container box_1620">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-haspopup="true" aria-expanded="false">Products</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="products">View Products</a></li>
+            <div class="main_menu" id="mainNav">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container box_1620">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item active"><a class="nav-link" href="/"> {% trans "Home" %}</a></li>
+    
+                                <li class="nav-item submenu dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                            aria-haspopup="true" aria-expanded="false">{% trans "Products" %}</a>
+                                        <ul class="dropdown-menu">
+                                                <li class="nav-item"><a class="nav-link" href="products">{% trans "View Products" %}</a></li>
+                                                {% if user.is_authenticated %}
+                                            <li class="nav-item"><a class="nav-link" href="add_product"> {% trans "Add Product" %}</a></li>
+                                            <!-- <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Project Details</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li> -->
+                                                        {% endif %}
+                                        </ul>
+                                    </li>
                                     {% if user.is_authenticated %}
-                                    <li class="nav-item"><a class="nav-link" href="add_product">Add Products</a></li>
-                                    <!-- <li class="nav-item"><a class="nav-link" href="portfolio-details.html">Project Details</a></li>
-                                                    <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li> -->
+        
+                                    <li class="nav-item active"><a class="nav-link" href="/logout">{% trans "Logout" %}</a></li>
+                                                {% endif %}
+                                    
+                                    {% if not user.is_authenticated %}
+                                    <li class="nav-item active"><a class="nav-link" href="/login">{% trans "login" %}</a></li>
+        
                                     {% endif %}
-                                </ul>
-                            </li>
-                            {% if user.is_authenticated %}
-
-                            <li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
-                            {% endif %}
-
-                            {% if not user.is_authenticated %}
-                            <li class="nav-item active"><a class="nav-link" href="/login">login</a></li>
-
-                            {% endif %}
-                        </ul>
+                            
+    
+    
+                                <!-- ------------------------------------------------- -->
+                                <!-- {% get_current_language as LANGUAGE_CODE %}
+                                    <form action="{% url 'set_language' %}" method="post" id = "my_form" >{% csrf_token %}
+                                        <input type="hidden" name="next" value="{{ redirect_to  }}">
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                        aria-haspopup="true" aria-expanded="false"> Change Language</a>
+                                    <ul class="dropdown-menu" >
+    
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% get_language_info_list for LANGUAGES as languages  %}
+                                        {% for language in languages %}
+    
+                                        <li class="nav-item"><a  class="nav-link" href="javascript:$('form').submit()" >{{ language.name_local  }} ({{ language.code }})</a></li>
+                                        <li class="nav-item" value="{{ language.code }}" >	<a href="javascript:$('#my_form').submit();" class="nav-link">
+                                            {{ language.name_local  }} ({{ language.code }})
+                                        </a>
+                                    </li>
+                                        {% endfor %}
+    
+                                    </ul>
+                                </li>
+    
+                                </form> -->
+    
+    
+                                <!-- ------------------------------------------------- -->
+                            
+                                <li class="nav-item dropdown">
+                                    <form action="{% url 'set_language' %}" method="post" class="nav-link">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="next" value="{{ redirect_to}}">
+    
+                                        <select  style="background: rgba(0, 0, 0, 0); Border: none;" name="language"
+                                            onchange="this.form.submit()" class="nav-link dropdown-toggle"
+                                            id="navbarDropdown">
+    
+                                            {% get_available_languages as LANGUAGES %}
+                                            {% get_language_info_list for LANGUAGES as languages %}
+                                            {% for language in languages%}
+                                            <option class="dropdown-item" value="{{ language.code}}"
+                                                {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                                                {{ language.name_local}} ({{language.code}})
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </form>
+                                </li>
+                            
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+                </nav>
+            </div>
+        </header>
     <!--================Header Menu Area =================-->
 
     <!--================Home Banner Area =================-->
@@ -90,7 +142,7 @@
     <section class="projects_area p_120">
         <div class="container">
             <div class="main_title">
-                <h2>Our Recent Completed Projects</h2>
+                <h2>{% trans "Our Recent Completed Projects" %}</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
             </div>
             <!-- <div class="projects_fillter">
@@ -109,12 +161,12 @@
                 <div class="col-lg-4 col-sm-6 brand web">
                     <div class="projects_item">
                         <!-- <img src="{% static 'first_app/img/projects/projects-4.jpg' %}" />	 -->
-                        <img src="media/{{product.photo}}" width="100%" />
+                        <img src="../media/{{product.photo}}" width="100%" />
                         <div class="projects_text">
                             <a href="detail/{{product.id}}">
                                 <h4>{{product.name}}</h4>
                             </a>
-
+                            <p>{{product.date}}</p>
                         </div>
                     </div>
                 </div>
@@ -131,7 +183,7 @@
         {% if products.has_other_pages %}
         <ul class="pagination">
             {% if products.has_previous %}
-            <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+            <li><a  href="?page={{ products.previous_page_number }}">&laquo;</a></li>
             {% else %}
             <li class="disabled"><span>&laquo;</span></li>
             {% endif %}

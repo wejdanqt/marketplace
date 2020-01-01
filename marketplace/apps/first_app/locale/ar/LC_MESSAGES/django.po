@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-01 12:02+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps/first_app/templates/first_app/SignUp.html:41
+#: apps/first_app/templates/first_app/admin.html:41
+#: apps/first_app/templates/first_app/all_products.html:43
+#: apps/first_app/templates/first_app/index.html:43
+#: apps/first_app/templates/first_app/login.html:41
+#: apps/first_app/templates/first_app/product_details.html:42
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: apps/first_app/templates/first_app/admin.html:45
+msgid "Products"
+msgstr "المنتجات"
+
+#: apps/first_app/templates/first_app/admin.html:47
+msgid "View Products"
+msgstr "إظهار المنتجات"
+
+#: apps/first_app/templates/first_app/admin.html:49
+msgid "Add Product"
+msgstr "إضافة منتج"
+
+#: apps/first_app/templates/first_app/admin.html:57
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: apps/first_app/templates/first_app/admin.html:61
+msgid "login"
+msgstr "تسجيل الدخول"
+
+#: apps/first_app/templates/first_app/all_products.html:93
+#: apps/first_app/templates/first_app/index.html:161
+msgid "Our Recent Completed Projects"
+msgstr "أحدث المشاريع المكتملة"
+
+#: apps/first_app/templates/first_app/index.html:140
+msgid "Hello"
+msgstr "مرحبا"
